@@ -67,19 +67,27 @@ class NCSN(GenBase):
         -------
         torch float representing total or average loss
         '''
-        x = x
         sigmas = self.sigmas
-        labels = torch.randint(0, len(sigmas), (x.shape[0],), device=x.device)
-        used_sigmas = sigmas[labels].view(x.shape[0], *([1] * len(x.shape[1:])))
-        noise = torch.randn_like(x) * used_sigmas
-        perturbed_samples = x + noise
-        target = - 1 / (used_sigmas ** 2) * noise
-        scores = self.forward(perturbed_samples, used_sigmas)
-        target = target.view(target.shape[0], -1)
-        scores = scores.view(scores.shape[0], -1)
-        loss = 1 / 2. * ((scores - target) ** 2).sum(dim=-1) * used_sigmas.squeeze() ** 2
+        C,H,W = self.configs.img_size
+        device = next(self.parameters()).device
+        b_size = x.shape[0]
+        n_s = 2
+        n_sig = len(sigmas)
 
-        return loss.mean(dim=0)
+        total_loss = 0
+        sigmas = torch.tensor(sigmas).type(torch.FloatTensor).reshape(1,1,-1,1).to(device)
+        noise = torch.normal(0,1,(b_size,n_s,n_sig,C)).to(device)
+
+        x_bar = x.reshape(b_size,1,1,C) + sigmas*noise
+        sigmas_val = torch.arange(0,n_sig).type(torch.FloatTensor).reshape(1,1,-1,1).to(device)
+        sigmas_bs = torch.ones((b_size,n_s,n_sig,1)).to(device)*sigmas_val
+        sigmas_bs = sigmas_bs.reshape(-1,1)
+        pred = self.forward(x_bar.reshape(b_size*n_s*n_sig,C,H,W),sigmas_bs).reshape(b_size,n_s,n_sig,C)
+        loss = sigmas*pred + noise
+        loss_sq = loss*loss
+        loss = torch.sum(loss_sq.reshape(b_size,-1),dim=1)
+        total_loss = torch.mean(loss)
+        return 0.5*total_loss/n_sig/n_s
 
     @torch.no_grad()
     def sample(self, num_to_gen: int):
