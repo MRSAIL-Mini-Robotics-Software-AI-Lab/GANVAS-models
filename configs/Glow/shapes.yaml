@@ -3,31 +3,35 @@ dataset: "shapes"
 n_bits: 1
 
 # Model Parameters
-model: "YourModel"
+model: "Glow"
 use_cuda: True
-save_model_path: null  # If null, the model is not saved
+save_model_path: '../shapes.pth'  # If null, the model is not saved
 
 # Custom Model Parameters (you add them as you need, all other parameters in this file must be added)
-n_blocks: 8
+n_blocks: 8  # depricated (for now)
+n_filters: 512  # filters of affine coupling
+n_levels: 2  # number of glow levels
+n_steps: 32   # number of flow steps
 
 # Training Parameters
 batch_size: 32
-num_iters: 5000
+num_iters: 15000
 lr: 5e-4
 clip_grad: 5
 eval_every: 500
-generate_every: 1000
+generate_every: 500
 eval_num_gen: 8
 final_num_gen: 100
+save_every: 50
 
 # Logging parameters
-experiment_name: "YourModel, binary shapes 1"
+experiment_name: "Glow, binary shapes 1"
 
 ############  Neptune Parameters ############
 log_neptune: True
-neptune_proj_name: "Add project name from your Neptune account here"
-neptune_tags: ["YourModel","shapes"]
-api_token: "Add Neptune's API token here"
+neptune_proj_name: ## NEPTUNE LOGS ##
+neptune_tags: ["Glow","shapes"]
+api_token: ## NEPTUNE LOGS ##
 
 ############  Tensorboard Parameters ############
 log_tensorboard: False  # Not yet implemented

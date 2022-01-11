@@ -1,2 +1,2 @@
 from .GenBase import GenBase
-from .YourModel import YourModel
+from .Glow import Glow
