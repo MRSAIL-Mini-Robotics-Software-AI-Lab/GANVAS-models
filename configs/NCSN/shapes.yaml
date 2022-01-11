@@ -1,0 +1,43 @@
+# Dataset Parameters
+dataset: "shapes"
+n_bits: 1
+
+# Model Parameters
+model: "NCSN"
+use_cuda: True
+save_model_path: "./ncsn_shapes.pth"  # If null, the model is not saved
+save_every: 1000
+
+# Custom Model Parameters (you add them as you need, all other parameters in this file must be added)
+n_features: 20
+n_sigs: 10
+max_sigma: 1
+min_sigma: 0.01
+epsilon: 2e-5
+steps_per_sig: 100
+
+# Training Parameters
+batch_size: 64
+num_iters: 5000
+lr: 5e-4
+clip_grad: 5
+eval_every: 2000
+generate_every: 500
+eval_num_gen: 8
+final_num_gen: 100
+
+# Logging parameters
+experiment_name: "NCSN, binary shapes 1"
+
+############  Neptune Parameters ############
+log_neptune: False
+neptune_proj_name: "kareem-elsawah/flow-models"
+neptune_tags: ["NCSN","shapes"]
+api_token: ""
+
+############  Tensorboard Parameters ############
+log_tensorboard: False  # Not yet implemented
+
+############  tqdm and manual logging Parameters ############
+log_tqdm: True
+log_file: False
