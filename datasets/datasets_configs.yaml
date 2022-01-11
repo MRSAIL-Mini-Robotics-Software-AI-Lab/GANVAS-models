@@ -1,0 +1,24 @@
+mnist: {
+  img_size: [1,28,28],
+  gdrive_id: "1qa8RwinNMvpX_0ncdpyGXa6VQazi1QQv"
+}
+
+shapes: {
+  img_size: [1,20,20],
+  gdrive_id: "1qa8RwinNMvpX_0ncdpyGXa6VQazi1QQv"
+}
+
+colored_mnist: {
+  img_size: [3,28,28],
+  gdrive_id: "1qa8RwinNMvpX_0ncdpyGXa6VQazi1QQv"
+}
+
+colored_shapes: {
+  img_size: [3,20,20],
+  gdrive_id: "1qa8RwinNMvpX_0ncdpyGXa6VQazi1QQv"
+}
+
+celeba_32: {
+  img_size: [3,32,32],
+  gdrive_id: "To Add"
+}

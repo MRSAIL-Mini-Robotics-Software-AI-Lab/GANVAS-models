@@ -1,0 +1,4 @@
+neptune-client
+numpy
+torch
+pyyaml
