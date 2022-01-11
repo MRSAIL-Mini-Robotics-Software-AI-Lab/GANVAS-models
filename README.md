@@ -1,12 +1,15 @@
 # GANVAS-models
-Generative Autoregressive, Normalized Flows, VAEs, Score-based models (GANVAS) is a 
+This is an implementation of various generative models. It contains implementations of the following:
+* Autoregressive Models: PixelCNN, GatedPixelCNN
+* Normalized Flows: Glow
+* VAEs
+* Score-based models: Denoising Score Matching
 
-
+The code is ready to train the models using shapes, colored shapes, MNIST, and colored MNIST. Instructions on how to add new datasets can be found in datasets/datasets.py
+Models can also be easily added, see instructions in main.py
 
 ## How to use
-<ol> 
-  <li>Create a <a src="https://neptune.ai/"> Neptune </a> account, create a project and use the API token of your project in the API_TOKEN key in the <a src="https://github.com/MRSAIL-Mini-Robotics-Software-AI-Lab/GANVAS-models/blob/main/configs/Glow/colored_shapes.yaml"> /configs</a></li>
-  <li>Open the command line and paste <code> python main.py --configs ./configs/YourModel/dataset_name.yaml</code> and replace YourModel with your desired model from <a src"https://github.com/MRSAIL-Mini-Robotics-Software-AI-Lab/GANVAS-models/tree/main/models"> /models</a></li>
-  <li>Enjoy training the model !!</li>
-  
-</ol>
+* Create a [Neptune](https://neptune.ai/") account, create a project and use the API token of your project in the API_TOKEN key in the appropriate config file in the configs folder
+* Run the command <code> python main.py --configs ./configs/model_name/dataset_name.yaml</code>
+* You can find the config details of each dataset and logging settings in the yaml files
+* You will find the training results, generated samples, and others on neptune (make sure that log_neptune is set to True in the yaml file)
