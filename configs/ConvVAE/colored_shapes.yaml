@@ -1,0 +1,42 @@
+# to run python main.py --configs ./configs/ConvVAE/colored_shapes.yaml
+
+# Dataset Parameters
+dataset: "colored_shapes"
+n_bits: 1
+
+# Model Parameters
+model: "ConvVAE"
+use_cuda: True
+save_model_path: null # If null, the model is not saved
+
+# Custom Model Parameters (you add them as you need, all other parameters in this file must be added)
+features: 10
+B: 1
+filter_num: 32
+
+# Training Parameters
+batch_size: 256
+num_iters: 10000
+lr: 5e-4
+clip_grad: 5
+eval_every: 500
+generate_every: 20
+eval_num_gen: 8
+final_num_gen: 100
+save_every: 50
+
+# Logging parameters
+experiment_name: "ConvVAE, binary shapes 1"
+
+############  Neptune Parameters ############
+log_neptune: True
+neptune_proj_name: "ConvVAE"
+neptune_tags: ["ConvVAE", "shapes"]
+api_token: "=="
+
+############  Tensorboard Parameters ############
+log_tensorboard: False # Not yet implemented
+
+############  tqdm and manual logging Parameters ############
+log_tqdm: True
+log_file: False

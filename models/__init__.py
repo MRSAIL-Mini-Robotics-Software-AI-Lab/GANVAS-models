@@ -1,2 +1,3 @@
 from .GenBase import GenBase
-from .YourModel import YourModel
+from .VAE import VAE
+from .ConvVAE import ConvVAE

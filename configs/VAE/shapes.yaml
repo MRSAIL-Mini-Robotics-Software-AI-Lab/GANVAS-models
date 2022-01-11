@@ -1,0 +1,38 @@
+# Dataset Parameters
+dataset: "shapes"
+n_bits: 1
+
+# Model Parameters
+model: "VAE"
+use_cuda: True
+save_model_path: null # If null, the model is not saved
+
+# Custom Model Parameters (you add them as you need, all other parameters in this file must be added)
+features: 32
+beta: 2
+
+# Training Parameters
+batch_size: 256
+num_iters: 1000
+lr: 5e-4
+clip_grad: 5
+eval_every: 500
+generate_every: 20
+eval_num_gen: 8
+final_num_gen: 100
+
+# Logging parameters
+experiment_name: "Vae, binary shapes 1"
+
+############  Neptune Parameters ############
+log_neptune: True
+neptune_proj_name: "Vae"
+neptune_tags: ["Vae", "shapes"]
+api_token: ""
+
+############  Tensorboard Parameters ############
+log_tensorboard: False # Not yet implemented
+
+############  tqdm and manual logging Parameters ############
+log_tqdm: True
+log_file: False
