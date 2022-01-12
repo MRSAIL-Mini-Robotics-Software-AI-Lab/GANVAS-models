@@ -1,0 +1,42 @@
+# Dataset Parameters
+dataset: "colored_mnist"
+n_bits: 1
+
+# Model Parameters
+model: "pixelCNN"
+use_cuda: True
+save_model_path: null  # If null, the model is not saved
+save_every: 10
+# Custom Model Parameters (you add them as you need, all other parameters in this file must be added)
+n_blocks: 10
+h: 60
+start_k: 7
+residual_k: 7
+ 
+
+# Training Parameters
+batch_size: 32
+num_iters: 6000
+lr: 1e-3
+gamma: 0.5
+clip_grad: 5
+eval_every: 500
+generate_every: 1000
+eval_num_gen: 8
+final_num_gen: 100
+
+# Logging parameters
+experiment_name: "pixelCNN, on mnist 4 bits"
+
+############  Neptune Parameters ############
+log_neptune: True
+neptune_proj_name: #ADD PROJECT NAME#
+neptune_tags: #NEPTUNE TAGS#
+api_token: #ADD NEPTUNE API TOKKEN#
+
+############  Tensorboard Parameters ############
+log_tensorboard: False  # Not yet implemented
+
+############  tqdm and manual logging Parameters ############
+log_tqdm: True
+log_file: False
