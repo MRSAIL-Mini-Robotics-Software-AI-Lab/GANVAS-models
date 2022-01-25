@@ -1,7 +1,7 @@
 # GANVAS-models
 This is an implementation of various generative models. It contains implementations of the following:
 * Autoregressive Models: PixelCNN, GatedPixelCNN
-* Normalized Flows: Glow
+* Normalized Flows: Generative Flow (Glow)
 * VAEs
 * Score-based models: Denoising Score Matching
 
